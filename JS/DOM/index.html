@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+      height: 300px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="number1"></h1>
+  <h2 id="number2"></h2>
+  <button onclick="showText()">
+    Show Number
+  </button>
+
+  <button onclick="changeColor()">
+    Change Color
+  </button>
+  
+  <button onclick="randomColor()">
+    Random Color
+  </button>
+  <div id="color"></div>
+
+  <div id="colors"></div>
+</body>
+<script>
+  function showText() {
+    document.getElementById('number1').innerHTML=Math.random()*100;//Noktalı random sayı
+    document.getElementById('number2').innerHTML=Math.floor(Math.random()*100);//Tam random sayı
+  }
+
+  function changeColor() {
+    document.querySelector("#color").style.backgroundColor="blue";
+  }
+
+  var colors = ["red", "green", "blue", "black", "purple", "orange", "yellow", "brown", "gray", "pink"];
+
+  function randomColor() {
+    var randomNumber = Math.floor(Math.random() * colors.length);
+    document.getElementById("colors").style.backgroundColor = colors[randomNumber];
+  }
+</script>
+</html>
