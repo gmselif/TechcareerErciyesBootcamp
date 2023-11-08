@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="display: flex; flex-direction: row;">
+    <div style="margin: 100px;">
+      <div>
+        <label for="width">Width</label>
+        <input type="text" id="width">
+      </div>
+      <div>
+        <label for="height">Height</label>
+        <input type="text" id="height">
+      </div>
+      <div>
+        <button onclick="ChangeColor()">
+          Calculate
+        </button>
+      </div>
+      <div class="box" style="background-color: blue; width: 100px; height: 100px;"></div>
+    </div>
+    <div style="margin: 100px; width: 10px; height: 80vh; background-color: black;"></div>
+    <div style="margin: 100px;">
+      <div>
+        <label for="email">Email</label>
+        <input type="text" id="email">
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="text" id="password">
+      </div>
+      <div>
+        <button onclick="SignIn()">
+          Sign In
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  function ChangeColor() {
+    var widthValue = document.getElementById('width').value;
+    var heightValue = document.getElementById('height').value;
+    document.querySelector(".box").style.width = widthValue+"px";
+    document.querySelector(".box").style.height = heightValue+"px";
+  }
+
+  function SignIn() {
+    document.getElementById("email").value;
+    document.getElementById("password").value;
+  }
+</script>
+</html>

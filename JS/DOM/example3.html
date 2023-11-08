@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      margin: 25px;
+      display: flex;
+      flex-direction: row;
+      width: 98%;
+      height: 93vh;
+      background-color: greenyellow;
+    }
+    .column1 {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+    }
+    .column2 {
+      height: 93vh;
+      width: 20px;
+      background-color: red;
+    }
+    button {
+      width: 150px;
+      height: 75px;
+      margin-bottom: 30px;
+    }
+    img {
+      margin-top: 10px;
+      height: 150px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="column1">
+      <button onclick="raceStart()">START</button>
+      <img class="horse1" src="https://www.thesprucepets.com/thmb/WCHi1vABy_vfH6kDo7snIluUzyo=/2109x0/filters:no_upscale():strip_icc()/GettyImages-909948608-5c69cd9446e0fb0001560d1a.jpg" alt="Horse1">
+      <img class="horse2" src="https://www.thesprucepets.com/thmb/WCHi1vABy_vfH6kDo7snIluUzyo=/2109x0/filters:no_upscale():strip_icc()/GettyImages-909948608-5c69cd9446e0fb0001560d1a.jpg" alt="Horse2">
+      <img class="horse3" src="https://www.thesprucepets.com/thmb/WCHi1vABy_vfH6kDo7snIluUzyo=/2109x0/filters:no_upscale():strip_icc()/GettyImages-909948608-5c69cd9446e0fb0001560d1a.jpg" alt="Horse3">
+    </div>
+    <div class="column2">
+
+    </div>
+  </div>
+</body>
+<script>
+  var total = 0;
+  function raceStart() {
+    setInterval(()=>{
+      var randomNumber = Math.floor(Math.random()*3+1);
+      total += 50;
+      document.querySelector(`.horse${randomNumber}`).style.marginLeft = total + "px"; 
+    },500);
+  }
+</script>
+</html>

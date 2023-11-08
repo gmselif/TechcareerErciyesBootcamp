@@ -16,18 +16,27 @@
       border-style: solid;
       padding: 10px;
     }
+    .button {
+      display: flex; 
+      justify-content: center; 
+      margin: 100px; 
+    }
+    button {
+      height: 100px;
+      width: 300px;
+    }
   </style>
 </head>
 <body>
     <div class="container">
-    <div class="item">2</div>
+    <div class="item"></div>
     <div class="item"></div>
     <div class="item"></div>
     <div class="item"></div>
     <div class="item"></div>
     <div class="item"></div>
   </div>
-  <div style="display: flex; justify-content: center; margin: 100px;">
+  <div class="button">
     <button onclick="randomNumbers()">
       ÇEKİLİŞ
     </button>
@@ -44,9 +53,10 @@
         randomNumbers.push(randomNumber);
         items[i].innerHTML = randomNumber;
       }
+      else {
+        i--
+      }
     }
-    console.log(randomNumbers);
-
   }
 </script>
 </html>
