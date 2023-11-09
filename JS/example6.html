@@ -1,27 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  <label for="name">
-    Name
-  </label>
-  <input type="text" id="name">
-  <button onclick="Add()">Click</button>
+  <div style="display: flex; flex-direction: column;">
+    <h1></h1>
+    <div>
+      <label for="number1">Number1</label>
+      <input type="text" id="number1">
+    </div>
+    <div>
+      <label for="number2">Number2</label>
+      <input type="text" id="number2">
+    </div>
+    <div>
+      <button onclick="Topla()">Topla</button>
+      <button onclick="Cikar()">Çıkar</button>
+    </div>
+    <div>
+      <button onclick="Carp()">Çarp</button>
+      <button onclick="Bol()">Böl</button>
+    </div>
+    <div>
+      <button onclick="Karekok()">Karekök Al</button>
+    </div>
+  </div>
 </body>
 <script>
-  var ul = document.createElement("ul");
-  document.body.appendChild(ul);
-  function Add() {
-    if(name){
-      var li = document.createElement("li");
-      li.innerHTML=document.querySelector("#name").value;
-      ul.appendChild(li);
-    }
+  function Topla() {
+    var number1 = document.getElementById("number1").value;
+    var number2 = document.getElementById("number2").value;
+    document.querySelector("h1").innerHTML=Number(number1)+Number(number2);
   }
-  
+  function Cikar() {
+    var number1 = document.getElementById("number1").value;
+    var number2 = document.getElementById("number2").value;
+    document.querySelector("h1").innerHTML=Number(number1)-Number(number2);
+  }
+  function Carp() {
+    var number1 = document.getElementById("number1").value;
+    var number2 = document.getElementById("number2").value;
+    document.querySelector("h1").innerHTML=Number(number1)*Number(number2);
+  }
+  function Bol() {
+    var number1 = document.getElementById("number1").value;
+    var number2 = document.getElementById("number2").value;
+    document.querySelector("h1").innerHTML=Number(number1)/Number(number2);
+  }
+  function Karekok() {
+    var number1 = document.getElementById("number1").value;
+    var number2 = document.getElementById("number2").value;
+    document.querySelector("h1").innerHTML=Math.sqrt(Number(number1));
+  }
 </script>
+
 </html>
