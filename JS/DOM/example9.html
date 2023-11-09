@@ -23,7 +23,6 @@
     for (var i=0; i<listLength; i++) {
       listItems.push(list.childNodes[i].innerHTML);
     }
-    console.log(typeof listItems[0]);
     
     if ( listLength < 15 && !listItems.includes(number.toString())) {
       let li = document.createElement("li");
