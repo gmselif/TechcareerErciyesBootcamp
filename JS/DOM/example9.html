@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!--butona basıldığında 1-100 arasında sayıyı listeye ekle. Aynı sayıyı eklemesin. 15 den sonra eklemesin.-->
+  <button onclick="Add()">Add</button>
+  <ul id="list"></ul>
+</body>
+<script>
+  function Add() {
+    var list = document.getElementById("list");
+    var listLength = list.children.length;
+    var listItems = [];
+
+    var number = Math.floor(Math.random() * 100 + 1);
+    
+    for (var i=0; i<listLength; i++) {
+      listItems.push(list.childNodes[i].innerHTML);
+    }
+    console.log(typeof listItems[0]);
+    
+    if ( listLength < 15 && !listItems.includes(number.toString())) {
+      let li = document.createElement("li");
+      li.innerHTML = number;
+      document.getElementById("list").appendChild(li);
+    }
+    else {
+      --i;
+    }
+  }
+</script>
+
+</html>

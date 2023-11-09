@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <label for="name">Name</label>
+    <input type="text" id="name">
+  </div>
+  <div>
+    <label for="surname">Surname</label>
+    <input type="text" id="surname">
+  </div>
+  <div>
+    <button onclick="Add()">Add</button>
+  </div>
+  <div>
+    <ul id="list"></ul>
+  </div>
+</body>
+<script>
+  function Add() {
+    let li = document.createElement("li");
+    let name = document.querySelector("#name").value;
+    let surname = document.querySelector("#surname").value;
+
+    li.innerHTML = name.toUpperCase() + " " + surname.toUpperCase();
+    document.querySelector("#list").appendChild(li);
+    
+  }
+</script>
+</html>

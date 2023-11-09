@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label for="name">
+    Name
+  </label>
+  <input type="text" id="name">
+  <button onclick="Add()">Click</button>
+</body>
+<script>
+  var ul = document.createElement("ul");
+  document.body.appendChild(ul);
+  function Add() {
+    if(name){
+      var li = document.createElement("li");
+      li.innerHTML=document.querySelector("#name").value;
+      ul.appendChild(li);
+    }
+  }
+  
+</script>
+</html>
