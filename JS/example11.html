@@ -29561,14 +29561,14 @@
   //Gecikmiş siparişlerin arkaplan rengini kırmızı yap. Gecikmiş = requireddate - shippeddate
   
   //5-10 gün geciken siparişleri consola yazdırır.
-  console.log(
+  console.log("5-10 gün geciken siparişler: ",
     orders.filter(item => 
       moment(item.shippedDate).diff(item.requiredDate, 'days')<10
       && moment(item.shippedDate).diff(item.requiredDate, 'days')>5
   ));
 
   //Aralık 1996 tarihinde verilen sipariş sayısını consola yazdırır.
-  console.log(
+  console.log("Aralık 1996 tarihinde verilen sipariş sayısı: ",
     orders.filter(item => 
       moment(item.orderDate).format("YYYY") == "1996" 
       && moment(item.orderDate).format("MM") == "12"
