@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;      
+      margin-top: 100px;
+    }
+    img {
+      height: 60vh;
+      width: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img alt="FREE Palestine!!!" src="https://ichef.bbci.co.uk/news/976/cpsprodpb/848D/production/_131433933_d3074734843dbed20db282045d8f132ee89b2d240_0_5500_36671000x667.jpg">
+  </div>
+</body>
+<script>
+  let imageUrls = [
+    "https://www.telegraph.co.uk/content/dam/news/2023/10/09/TELEMMGLPICT000352644013_16968842708980_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwSX5rhseiWKOo9p9OQ-ymek.jpeg",
+    "https://efe.com/wp-content/uploads/2023/10/rss-efeceeec139b21c13a526a8dc0379644f83eb55bf99w.jpg",
+    "https://static.timesofisrael.com/www/uploads/2023/10/33YA3AR-highres.jpg",
+    "https://ichef.bbci.co.uk/news/976/cpsprodpb/F8A7/production/_131555636_b0444e036908734e297f18e4b66813c65f05683a112_406_2916_16401000x563.jpg",
+    "https://ichef.bbci.co.uk/news/976/cpsprodpb/848D/production/_131433933_d3074734843dbed20db282045d8f132ee89b2d240_0_5500_36671000x667.jpg"
+  ]
+
+  let curr = 0;
+  //Her 3 saniyede bir resimler sırayla ekrana gelir.(Slider)
+  setInterval(() => {
+    if (curr==imageUrls.length) {
+      curr=0;
+    }
+    document.querySelector("img").src = imageUrls[curr]; 
+    ++curr; 
+  }, 3000);
+</script>
+</html>
