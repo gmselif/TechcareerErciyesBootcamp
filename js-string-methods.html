@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="text1">Çağatay Yıldız</div>
+  <div class="div1"></div>
+  <br>
+  <div class="text2">Çağatay Yıldız</div>
+  <div class="div2"></div>
+  <br>
+  <div class="text3">******Çağatay Yıldız</div>
+  <div class="div3"></div>
+  <br>
+  <div class="text4">Çağatay  Yıldız</div>
+  <div class="div4"></div>
+  <br>
+  <div class="text5">**Tech Career**</div>
+  <div class="div5"></div>
+  <br>
+  <div class="text6">Tech Career</div>
+  <div class="div6"></div>
+  <br>
+  <div class="text7">Tech Career Bilişim Teknolojileri</div>
+  <div class="div7"></div>
+  <div class="div8"></div>
+  <br>
+  <div class="text9">tech career</div>
+  <div class="div9"></div>
+  <br>
+  <div class="text10">tech career deneme</div>
+  <div class="div10"></div>
+  <br>
+</body>
+<script>
+  var text1 = document.querySelector(".text1").innerHTML;
+  var text2 = document.querySelector(".text2").innerHTML;
+  var text3 = document.querySelector(".text3").innerHTML;
+  var text4 = document.querySelector(".text4").innerHTML;
+  var text5 = document.querySelector(".text5").innerHTML;
+  var text6 = document.querySelector(".text6").innerHTML;
+  var text7 = document.querySelector(".text7").innerHTML;
+  var text9 = document.querySelector(".text9").innerHTML;
+  var text10 = document.querySelector(".text10").innerHTML;
+  
+  var div1 = document.querySelector(".div1");
+  var div2 = document.querySelector(".div2");
+  var div3 = document.querySelector(".div3");
+  var div4 = document.querySelector(".div4");
+  var div5 = document.querySelector(".div5");
+  var div6 = document.querySelector(".div6");
+  var div7 = document.querySelector(".div7");
+  var div8 = document.querySelector(".div8");
+  var div9 = document.querySelector(".div9");
+  var div10 = document.querySelector(".div10");
+
+  //Çağatay Yıldız metnindeki boşlukları kaldır.
+  div1.innerHTML = text1.replaceAll(" ", ""); 
+
+  //Çağatay Yıldız metnindeki boşlukları kaldır ve tüm harfleri büyült.
+  div2.innerHTML = text2.replaceAll(" ", "").toUpperCase();  
+
+  //******Çağatay Yıldız metnindeki yıldızları kaldır.
+  div3.innerHTML = text3.replaceAll("*", ""); 
+
+  //Çağatay  Yıldız metninde 2 boşluk var. Bunu 1 boşluk yap.
+  div4.innerHTML = text4.replace(" ", ""); 
+  
+  //**Tech Career** metnindeki yıldızları kaldır.
+  div5.innerHTML = text5.replaceAll("*", "");  
+
+  //Tech Career metninin sağına ve soluna 3 yıldız ekle.
+  div6.innerHTML = "***" + text6 + "***"; 
+
+  //Tech Career Bilişim Teknolojileri metnindeki son kelimeyi büyült.
+  div7.innerHTML = text7.slice(0, text7.lastIndexOf(' ') + 1) 
+                  + text7.slice(text7.lastIndexOf(' ') + 1).toUpperCase(); 
+  div8.innerHTML = text7.substring(0, text7.lastIndexOf(' ') + 1) 
+                  + text7.substring(text7.lastIndexOf(' ') + 1, text7.length).toUpperCase(); 
+  
+  //tech career kelimelerinin ilk harflerini büyült.
+  var firstWord = text9.charAt(0).toUpperCase() + 
+    text9.slice(1, text9.indexOf(' ') + 1);
+  var secondWord = text9.slice(text9.indexOf(' ') + 1).charAt(0).toUpperCase() + 
+    text9.slice(text9.indexOf(' ') + 2, text9.length);
+  
+  div9.innerHTML = firstWord + secondWord;
+
+  //Parametre olarak aldığı string değişkenin içindeki tüm kelimelerin başharflerini büyük harfe çevirir.
+  function toCapitalize(str) {
+    var words = str.split(" ");
+    var capitalizedWords = [];
+
+    words.forEach((item) =>{
+      capitalizedWords.push(
+        item.charAt(0).toUpperCase() +
+        item.slice(1, item.length)
+      );
+    });
+
+    var capitalizedStr = capitalizedWords.join(" ");
+    return capitalizedStr;
+  }
+
+  div10.innerHTML = toCapitalize(text10);
+
+</script>
+</html>
