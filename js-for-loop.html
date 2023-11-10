@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>250 ye kadar olan sayıların toplamı: </div>
+  <div class="div1"></div>
+  <br>
+  <div>25-125 arasındaki sayıların toplamı: </div>
+  <div class="div2"></div>
+  <br>
+  <div>1-1000 arasındaki sayıların toplamının ortalaması: </div>
+  <div class="div3"></div>
+  <br>
+  <div>1-100 arasındaki sayılardan 5'e bölünenler: </div>
+  <div class="div4"></div>
+  <br>
+  <div>33, 11, -5, 20, 1, 55, 100, 2, 94, 55, 11 sayılarının en büyüğü: </div>
+  <div class="div5"></div>
+  <br>
+  <div>en küçüğü: </div>
+  <div class="div6"></div>
+</body>
+<script>
+  var div1 = document.querySelector(".div1");
+  var div2 = document.querySelector(".div2");
+  var div3 = document.querySelector(".div3");
+  var div4 = document.querySelector(".div4");
+  var div5 = document.querySelector(".div5");
+  var div6 = document.querySelector(".div6");
+
+  var total = 0;
+  for (var i=1; i<251; i++) {
+    total += i;
+  }
+  div1.innerHTML=total;
+
+  total = 0;
+  for (var j=25; j<126; j++) {
+    total += j;
+  }
+  div2.innerHTML = total;
+
+  total = 0;
+  for (var t=0; t<1001; t++) {
+    total += t;
+  }
+  div3.innerHTML = total/1000;
+
+  var arr = [];
+  for (var k=1; k<100; k++) {
+    k%5 == 0 ? arr.push(k) : null;
+  }
+  div4.innerHTML = arr;
+
+  var numbers = [33, 11, -5, 20, 1, 55, 100, 2, 94, 55, 11];
+  var max = 0;
+  var min = 0;
+  for (var f=0; f<numbers.length; f++) {
+    if(numbers[f]>max){
+      max = numbers[f];
+    }
+    if(numbers[f]<min) {
+      min = numbers[f];
+    }
+  }
+  div5.innerHTML = max;
+  div6.innerHTML = min;
+</script>
+</html>
