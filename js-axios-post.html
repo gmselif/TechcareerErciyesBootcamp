@@ -35,8 +35,11 @@
     var name = document.getElementById("name").value;
     var unitPrice = document.getElementById("unitPrice").value;
     var stock = document.getElementById("stock").value;
-
-    if (Number(unitPrice) != 0 && Number(stock) != 0) {
+    
+    if (Number(unitPrice) != 0 
+      && Number(stock) != 0 
+      && isNaN(stock) 
+      && isNaN(unitPrice)) {
       var newProduct = {
         name: name,
         unitPrice: unitPrice,
