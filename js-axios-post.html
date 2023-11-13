@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.1/axios.min.js"
+    integrity="sha512-m9S8W3a9hhBHPFAbEIaG7J9P92dzcAWwM42VvJp5n1/M599ldK6Z2st2SfJGsX0QR4LfCVr681vyU5vW8d218w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
+
 <body>
+  <h1>ADD PRODUCT</h1>
+  <h2></h2>
   <div>
-    <label for="name">Name</label>
+    <label for="name">Name: </label>
     <input id="name" type="text">
   </div>
   <div>
-    <label for="description">Description</label>
-    <input id="description" type="text">
+    <label for="unitPrice">Unit Price: </label>
+    <input id="unitPrice" type="text">
+  </div>
+  <div>
+    <label for="stock">Stock</label>
+    <input id="stock" type="text">
+  </div>
+  <div>
+    <button onclick="Add()">Add</button>
   </div>
 </body>
 <script>
+  function Add() {
+    var h2 = document.querySelector("h2");
+    var name = document.getElementById("name").value;
+    var unitPrice = document.getElementById("unitPrice").value;
+    var stock = document.getElementById("stock").value;
 
+    if (Number(unitPrice) != 0 && Number(stock) != 0) {
+      var newProduct = {
+        name: name,
+        unitPrice: unitPrice,
+        stock: stock
+      }
+
+      console.log(newProduct);
+      axios.post("https://northwind.vercel.app/api/products", newProduct).then(res => { console.log("Success!!!"); }
+      );
+    }
+    else{
+      h2.innerHTML = "Unit Price veya Stock 0 olamaz!!!";
+    }
+  }
 </script>
+
 </html>
