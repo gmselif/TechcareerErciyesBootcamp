@@ -12,23 +12,34 @@
 </head>
 
 <body>
-  <div>
-    <label for="companyName">Company Name</label>
-    <input id="companyName" type="text">
-  </div>
-  <div>
-    <label for="contactName">Contact Name</label>
-    <input id="contactName" type="text">
-  </div>
-  <div>
-    <label for="contactTitle">Contact Title</label>
-    <input id="contactTitle" type="text">
-  </div>
-  <div>
-    <button onclick="Add()">Add</button>
-  </div>
-  <div>
-    <ul></ul>
+  <div style="display: flex; flex-direction: row;">
+    <div>
+      <div>
+        <label for="companyName">Company Name</label>
+        <input id="companyName" type="text">
+      </div>
+      <div>
+        <label for="contactName">Contact Name</label>
+        <input id="contactName" type="text">
+      </div>
+      <div>
+        <label for="contactTitle">Contact Title</label>
+        <input id="contactTitle" type="text">
+      </div>
+      <div>
+        <button onclick="Add()">Add</button>
+      </div>
+      <div>
+        <ul></ul>
+      </div>
+    </div>
+    <div>
+      <div>
+        <label for="customerId">Customer ID</label>
+        <input id="customerId" type="text">
+      </div>
+      <button onclick="DeleteCustomer()">Delete</button>
+    </div>
   </div>
 </body>
 <script>
@@ -51,6 +62,13 @@
 
     axios.post(`https://northwind.vercel.app/api/customers`, newObject).then(res => {
       console.log("Success");
+    });
+  }
+
+  function DeleteCustomer() {
+    var id = document.getElementById("customerId").value;
+    axios.delete(`https://northwind.vercel.app/api/customers/${id}`).then(res => {
+      console.log("success");
     });
   }
 </script>
