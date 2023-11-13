@@ -44,7 +44,22 @@
 </body>
 <script>
   var ul = document.querySelector("ul");
-  function Add() {
+
+  getAllCustomers();
+
+  function getAllCustomers() {
+    axios.get("https://northwind.vercel.app/api/customers/")
+      .then(res => {
+        res.data.forEach(item => {
+          var li = document.createElement("li");
+          li.innerHTML = item.companyName + " " + item.contactName + " " + item.contactTitle;
+          ul.appendChild(li);
+        });
+
+      });
+  }
+
+  async function Add() {
     var companyName = document.getElementById("companyName").value;
     var contactName = document.getElementById("contactName").value;
     var contactTitle = document.getElementById("contactTitle").value;
@@ -56,11 +71,7 @@
         contactTitle: contactTitle
       }
 
-      var li = document.createElement("li");
-      li.innerHTML = companyName + " " + contactName + " " + contactTitle;
-      ul.appendChild(li);
-
-      axios.post(`https://northwind.vercel.app/api/customers`, newObject)
+      await axios.post(`https://northwind.vercel.app/api/customers`, newObject)
         .then(res => {
           console.log("Resource Added Successfully.", res.data);
         })
@@ -71,6 +82,8 @@
     else {
       console.log("")
     }
+    ul.innerHTML="";
+    getAllCustomers();
   }
 
   async function DeleteCustomer() {
@@ -97,6 +110,8 @@
       .catch(err => {
         console.error("Error Deleting Resource: ", err);
       });
+
+    getAllCustomers();
   }
 </script>
 
