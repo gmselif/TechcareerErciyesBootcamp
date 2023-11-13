@@ -38,8 +38,8 @@
     
     if (Number(unitPrice) != 0 
       && Number(stock) != 0 
-      && isNaN(stock) 
-      && isNaN(unitPrice)) {
+      && !isNaN(Number(stock)) 
+      && !isNaN(Number(unitPrice))) {
       var newProduct = {
         name: name,
         unitPrice: unitPrice,
