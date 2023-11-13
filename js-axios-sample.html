@@ -22,7 +22,7 @@
       var ul = document.querySelector("ul");
       res.data.forEach(element => {
         var li = document.createElement("li");
-        li.innerHTML = element.name + " " + element.unitPrice;
+        li.innerHTML = element.name + " - " + element.unitPrice;
         ul.appendChild(li);
       });
     });
