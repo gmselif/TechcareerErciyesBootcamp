@@ -16,11 +16,13 @@
 </body>
 <script>
   function getProducts() {
+    var h1 = document.querySelector("h1");
+    var ul = document.querySelector("ul");
+
+    ul.innerHTML = "";
     axios.get('https://northwind.vercel.app/api/products').then(res => {
-      var h1 = document.querySelector("h1");
       h1.innerHTML = "Ürün sayısı: " + res.data.length;
-      
-      var ul = document.querySelector("ul");
+
       res.data.forEach(element => {
         var li = document.createElement("li");
         li.innerHTML = element.name + " - " + element.unitPrice;
