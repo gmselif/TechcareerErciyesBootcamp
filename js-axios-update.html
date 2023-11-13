@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.1/axios.min.js"
+    integrity="sha512-m9S8W3a9hhBHPFAbEIaG7J9P92dzcAWwM42VvJp5n1/M599ldK6Z2st2SfJGsX0QR4LfCVr681vyU5vW8d218w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+
+<body>
+  <div>
+    <label for="companyName">Company Name</label>
+    <input id="companyName" type="text">
+  </div>
+  <div>
+    <label for="contactName">Contact Name</label>
+    <input id="contactName" type="text">
+  </div>
+  <div>
+    <label for="contactTitle">Contact Title</label>
+    <input id="contactTitle" type="text">
+  </div>
+  <div>
+    <button onclick="Add()">Add</button>
+  </div>
+  <div>
+    <ul></ul>
+  </div>
+</body>
+<script>
+  function Add() {
+    var companyName = document.getElementById("companyName").value;
+    var contactName = document.getElementById("contactName").value;
+    var contactTitle = document.getElementById("contactTitle").value;
+    var ul = document.querySelector("ul");
+    console.log(companyName)
+
+    var newObject = {
+      companyName: companyName,
+      contactName: contactName,
+      contactTitle: contactTitle
+    }
+
+    var li = document.createElement("li");
+    li.innerHTML = companyName + " " + contactName + " " + contactTitle;
+    ul.appendChild(li);
+
+    axios.post(`https://northwind.vercel.app/api/customers`, newObject).then(res => {
+      console.log("Success");
+    });
+  }
+</script>
+
+</html>
