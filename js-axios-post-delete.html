@@ -92,7 +92,7 @@
         <input id="contactName" type="text">
         <label for="contactTitle">Contact Title</label>
         <input id="contactTitle" type="text">
-        <button onclick="Add()">Add</button>
+        <button onclick="AddCustomer()">Add</button>
       </div>
       <div class="column">
         <h1>Delete a Customer</h1>
@@ -163,7 +163,7 @@
       });
   }
 
-  async function Add() {
+  async function AddCustomer() {
     var companyName = document.getElementById("companyName").value;
     var contactName = document.getElementById("contactName").value;
     var contactTitle = document.getElementById("contactTitle").value;
@@ -175,6 +175,7 @@
         contactTitle: contactTitle
       }
 
+      //Add new data to API
       await axios.post(BASE_URL, newObject)
         .then(res => {
           console.log("Resource Added Successfully.", res.data);
