@@ -8,52 +8,143 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.1/axios.min.js"
     integrity="sha512-m9S8W3a9hhBHPFAbEIaG7J9P92dzcAWwM42VvJp5n1/M599ldK6Z2st2SfJGsX0QR4LfCVr681vyU5vW8d218w=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 50px;
+      row-gap: 50px;
+    }
 
+    .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      column-gap: 50px;
+      width: 100%;
+      height: 60%;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid #d0d0d0;
+      border-radius: 10px;
+      padding: 3%;
+      width: 20%;
+    }
+
+    h1 {
+      align-self: center;
+    }
+
+    input {
+      border: 1px solid #d0d0d0;
+      border-radius: 10px;
+      width: 100%;
+      height: 40px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+
+    input:hover {
+      border-color: #000;
+    }
+
+    button {
+      border: none;
+      background-color: #003177;
+      color: #fff;
+      font-size: 20px;
+      padding: 10px;
+      border-radius: 10px;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    button:hover {
+      cursor: pointer;
+      background-color: #0031FF;
+    }
+
+    .row2 {
+      align-self: center;
+    }
+
+    table {
+      border: 1px solid #d0d0d0;
+      border-radius: 10px;
+      padding: 20px;
+      font-size: 20px;
+    }
+  </style>
 </head>
 
 <body>
-  <div style="display: flex; flex-direction: row;">
-    <div>
-      <div>
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <h1>Add new Customer</h1>
         <label for="companyName">Company Name</label>
         <input id="companyName" type="text">
-      </div>
-      <div>
         <label for="contactName">Contact Name</label>
         <input id="contactName" type="text">
-      </div>
-      <div>
         <label for="contactTitle">Contact Title</label>
         <input id="contactTitle" type="text">
-      </div>
-      <div>
         <button onclick="Add()">Add</button>
       </div>
-      <div>
-        <ul></ul>
-      </div>
-    </div>
-    <div>
-      <div>
+      <div class="column">
+        <h1>Delete a Customer</h1>
         <label for="customerId">Customer ID</label>
         <input id="customerId" type="text">
+        <button onclick="DeleteCustomer()">Delete</button>
       </div>
-      <button onclick="DeleteCustomer()">Delete</button>
+    </div>
+    <div class="row2">
+      <table>
+        <thead>
+          <th>ID</th>
+          <th>Company Name</th>
+          <th>Contact Name</th>
+          <th>Contact Title</th>
+        </thead>
+        <tbody>
+          <!--List all Customers-->
+        </tbody>
+      </table>
     </div>
   </div>
 </body>
 <script>
-  var ul = document.querySelector("ul");
+  var tbody = document.querySelector("tbody");
 
   getAllCustomers();
 
   function getAllCustomers() {
+    tbody.innerHTML = "";
+
     axios.get("https://northwind.vercel.app/api/customers/")
       .then(res => {
         res.data.forEach(item => {
-          var li = document.createElement("li");
-          li.innerHTML = item.companyName + " " + item.contactName + " " + item.id;
-          ul.appendChild(li);
+          var td1 = document.createElement("td");
+          var td2 = document.createElement("td");
+          var td3 = document.createElement("td");
+          var td4 = document.createElement("td");
+
+          td1.innerHTML = item.id;
+          td2.innerHTML = item.companyName;
+          td3.innerHTML = item.contactName;
+          td4.innerHTML = item.contactTitle;
+
+          var tr = document.createElement("tr");
+          var tbody = document.querySelector("tbody");
+
+          tbody.appendChild(tr);
+          tr.appendChild(td1);
+          tr.appendChild(td2);
+          tr.appendChild(td3);
+          tr.appendChild(td4);
         });
       })
       .catch(err => {
@@ -84,7 +175,6 @@
     else {
       console.log("")
     }
-    ul.innerHTML = "";
     getAllCustomers();
   }
 
@@ -112,8 +202,6 @@
       .catch(err => {
         console.error("Error Deleting Resource: ", err);
       });
-
-    ul.innerHTML = "";
     getAllCustomers();
   }
 </script>
