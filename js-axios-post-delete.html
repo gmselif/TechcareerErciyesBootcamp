@@ -196,7 +196,7 @@
     var id = document.getElementById("customerId").value;
 
     //Delete data from API
-    await axios.delete(`https://northwind.vercel.app/api/customers/${id}`)
+    await axios.delete(BASE_URL+id)
       .then(res => {
         console.log("Resource Deleted Successfully.");
         getAllCustomers();
