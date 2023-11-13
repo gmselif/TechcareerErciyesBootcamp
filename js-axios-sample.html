@@ -18,7 +18,7 @@
   function getProducts() {
     axios.get('https://northwind.vercel.app/api/products').then(res => {
       var h1 = document.querySelector("h1");
-      h1.innerHTML = res.data.length;
+      h1.innerHTML = "Ürün sayısı: " + res.data.length;
       var ul = document.querySelector("ul");
       res.data.forEach(element => {
         var li = document.createElement("li");
