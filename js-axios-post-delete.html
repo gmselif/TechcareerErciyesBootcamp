@@ -52,10 +52,12 @@
       .then(res => {
         res.data.forEach(item => {
           var li = document.createElement("li");
-          li.innerHTML = item.companyName + " " + item.contactName + " " + item.contactTitle;
+          li.innerHTML = item.companyName + " " + item.contactName + " " + item.id;
           ul.appendChild(li);
         });
-
+      })
+      .catch(err => {
+        console.error("Error Getting All Resources: ", err);
       });
   }
 
@@ -82,7 +84,7 @@
     else {
       console.log("")
     }
-    ul.innerHTML="";
+    ul.innerHTML = "";
     getAllCustomers();
   }
 
@@ -99,7 +101,7 @@
         }
       })
       .catch(err => {
-        console.error("Error Getting Resource: ", err);
+        console.error(`Error Getting Resource ${id}: `, err);
       });
 
     //Delete data from API
@@ -111,6 +113,7 @@
         console.error("Error Deleting Resource: ", err);
       });
 
+    ul.innerHTML = "";
     getAllCustomers();
   }
 </script>
