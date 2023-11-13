@@ -117,14 +117,23 @@
   </div>
 </body>
 <script>
+  const BASE_URL = "https://northwind.vercel.app/api/customers/";
+
   var tbody = document.querySelector("tbody");
 
   getAllCustomers();
 
+  const clearInputs = () => {
+    document.getElementById("companyName").value = "";
+    document.getElementById("contactName").value = "";
+    document.getElementById("contactTitle").value = "";
+    document.getElementById("customerId").value = "";
+  }
+
   function getAllCustomers() {
     tbody.innerHTML = "";
 
-    axios.get("https://northwind.vercel.app/api/customers/")
+    axios.get(BASE_URL)
       .then(res => {
         res.data.forEach(item => {
           var td1 = document.createElement("td");
@@ -145,6 +154,8 @@
           tr.appendChild(td2);
           tr.appendChild(td3);
           tr.appendChild(td4);
+
+          clearInputs();
         });
       })
       .catch(err => {
@@ -164,25 +175,25 @@
         contactTitle: contactTitle
       }
 
-      await axios.post(`https://northwind.vercel.app/api/customers`, newObject)
+      await axios.post(BASE_URL, newObject)
         .then(res => {
           console.log("Resource Added Successfully.", res.data);
+          getAllCustomers();
         })
         .catch(err => {
           console.error("Error Adding Resource: ", err);
         });
     }
     else {
-      console.log("")
+      alert("Fill all fields...")
     }
-    getAllCustomers();
   }
 
   async function DeleteCustomer() {
     var id = document.getElementById("customerId").value;
 
     //Delete data from list.
-    await axios.get(`https://northwind.vercel.app/api/customers/${id}`)
+    await axios.get(BASE_URL + id)
       .then(res => {
         for (var i = 0; i < ul.childElementCount; i++) {
           if (ul.childNodes[i].innerHTML.includes(res.data.companyName)) {
