@@ -6,7 +6,6 @@ function ProductDetail() {
   const { id } = useParams();
 
   var product = products?.find(q => q.id == id.substring(1));
-  console.log(product);
   return (
     <div style={{margin: "50px"}}>
       <h1>Product Detail</h1>
