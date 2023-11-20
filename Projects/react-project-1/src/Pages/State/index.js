@@ -3,6 +3,8 @@ import React, {useState} from 'react'
 function State() {
   var [counter, setCounter] = useState(200 + "px");
   var [randNumbers, SetRandNumbers] = useState([]);
+  var [color, setColor] = useState("");
+  var colors = ["black", "yellow", "green", "gray", "brown", "tomato", "purple", "pink", "red", "blue"];
 
   const handleIncrese = () => {
     var number = Number(counter.slice(0, counter.indexOf("p")));
@@ -17,8 +19,15 @@ function State() {
     }
   }
 
+  const handleChangeBackground = () => {
+    var randNum = Math.floor(Math.random() * 10);
+    if(colors[randNum] != color) {
+      setColor(colors[randNum]);
+    }
+  }
   return (
-    <div>
+    <div style={{backgroundColor: color}}>
+      <button onClick={handleChangeBackground}>Change Background</button>
       <div>
         <button onClick={handleIncrese}>Increase</button>
         <div style={{ width: counter, height: counter, backgroundColor: "black" }}></div>
