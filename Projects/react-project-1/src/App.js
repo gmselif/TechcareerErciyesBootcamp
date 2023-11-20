@@ -9,8 +9,6 @@ import TemplateFooter from "./Template/templateFooter"
 
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./Pages/Home";
-import About from "./Pages/About";
-import Suppliers from "./Pages/Suppliers";
 import Products from "./Pages/Products";
 import ProductDetail from "./Pages/ProductDetail";
 
