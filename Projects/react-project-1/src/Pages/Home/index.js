@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 function Home() {
   var [counter, setCounter] = useState(200 + "px");
+  var [randNumbers, SetRandNumbers] = useState([]);
 
   const handleIncrese = () => {
     var number = Number(counter.slice(0, counter.indexOf("p")));
@@ -10,7 +11,8 @@ function Home() {
   }
 
   const handleAddRandom = () => {
-
+    var rand = Math.floor(Math.random()*99+1);
+    SetRandNumbers([...randNumbers, rand]);
   }
 
   return (
@@ -21,7 +23,11 @@ function Home() {
       </div>
       <div>
         <button onClick={handleAddRandom}>Add Random</button>
-        <ul></ul>
+        <ul>
+          {randNumbers.map((item, key) => {
+            return <li key={key}>{item}</li>
+          })}
+        </ul>
       </div>
     </div>
   )
