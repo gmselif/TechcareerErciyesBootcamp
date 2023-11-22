@@ -1,22 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useQuery } from "react-query";
+
+async function getProducts() {
+  const res = await axios.get("https://northwind.vercel.app/api/products");
+  return res.json();
+}
 
 function Axios1() {
-  const [products, setProducts] = useState([]);
   const [length, setLength] = useState();
   const BASE_URL = "https://northwind.vercel.app/api/products";
 
-  useEffect(() => {
-    loadData(); 
-  }, [])
-
-  const loadData = () => {
-    axios.get(BASE_URL).then(res => {
-      setLength(res.data.length);
-      setProducts(res.data);
-    })
-  }
+  const { data, status } = useQuery("products", getProducts);
 
   const handleDelete = (id) => {
     axios.delete(`${BASE_URL}/${id}`)
@@ -35,17 +31,21 @@ function Axios1() {
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          {products.map(item => 
-            <tr key={item.id}>
-              <td><Link to={`/AxiosProducts/:${item.id}`}>{item.id}</Link></td>
-              <td>{item.name}</td>
-              <td>{item.unitPrice}</td>
-              <td>{item.unitsInStock}</td>
-              <td><button onClick={() => handleDelete(item.id)}>Delete</button></td>
-            </tr>
-          )}
-        </tbody>
+        {status === "error" && <p>Error fetching data</p>}
+        {status === "loading" && <p>Fetching data...</p>}
+        {status === "success" && (
+          <tbody>
+            {data.map(item =>
+              <tr key={item.id}>
+                <td><Link to={`/AxiosProducts/:${item.id}`}>{item.id}</Link></td>
+                <td>{item.name}</td>
+                <td>{item.unitPrice}</td>
+                <td>{item.unitsInStock}</td>
+                <td><button onClick={() => handleDelete(item.id)}>Delete</button></td>
+              </tr>
+            )}
+          </tbody>
+        )}
       </table>
     </div>
   )
