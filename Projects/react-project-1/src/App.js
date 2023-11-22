@@ -15,6 +15,7 @@ import State2 from "./Pages/State2";
 import ProductDetail from "./Pages/ProductDetail";
 import AxiosProducts from "./Pages/AxiosProducts";
 import AxiosProductDetail from "./Pages/AxiosProductDetail";
+import AxiosUsers from "./Pages/AxiosUsers";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <li><Link to="/State" style={{textDecoration: "none", textTransform: "uppercase", color: "#000"}}>State</Link></li>
         <li><Link to="/State2" style={{textDecoration: "none", textTransform: "uppercase", color: "#000"}}>State2</Link></li>
         <li><Link to="/AxiosProducts" style={{textDecoration: "none", textTransform: "uppercase", color: "#000"}}>AxiosProducts</Link></li>
+        <li><Link to="/AxiosUsers" style={{textDecoration: "none", textTransform: "uppercase", color: "#000"}}>AxiosUsers</Link></li>
       </ul>
 
       <Routes>
@@ -40,6 +42,7 @@ function App() {
         <Route path="/State2" element={<State2></State2>}></Route>
         <Route path="/AxiosProducts" element={<AxiosProducts></AxiosProducts>}></Route>
         <Route path="/AxiosProducts/:id" element={<AxiosProductDetail />}></Route>
+        <Route path="/AxiosUsers" element={<AxiosUsers></AxiosUsers>}></Route>
       </Routes>
     </div>
   );
