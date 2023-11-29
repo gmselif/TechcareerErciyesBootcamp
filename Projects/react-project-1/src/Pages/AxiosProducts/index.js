@@ -5,7 +5,7 @@ import { useQuery } from "react-query";
 
 async function getProducts() {
   const res = await axios.get("https://northwind.vercel.app/api/products");
-  return res.json();
+  return res.data;
 }
 
 function Axios1() {
@@ -15,7 +15,9 @@ function Axios1() {
   const { data, status } = useQuery("products", getProducts);
 
   const handleDelete = (id) => {
-    axios.delete(`${BASE_URL}/${id}`)
+    axios.delete(`${BASE_URL}/${id}`).then(res => {
+      axios.get(BASE_URL)
+    })
   }
 
   return (
