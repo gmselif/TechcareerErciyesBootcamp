@@ -16,6 +16,7 @@ import ProductDetail from "./Pages/ProductDetail";
 import AxiosProducts from "./Pages/AxiosProducts";
 import AxiosProductDetail from "./Pages/AxiosProductDetail";
 import AxiosUsers from "./Pages/AxiosUsers";
+import DataGridSample from "./Pages/DataGridSample";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <li><Link to="/State2" style={{textDecoration: "none", textTransform: "uppercase", color: "#000"}}>State2</Link></li>
         <li><Link to="/AxiosProducts" style={{textDecoration: "none", textTransform: "uppercase", color: "#000"}}>AxiosProducts</Link></li>
         <li><Link to="/AxiosUsers" style={{textDecoration: "none", textTransform: "uppercase", color: "#000"}}>AxiosUsers</Link></li>
+        <li><Link to="/DataGridSample" style={{textDecoration: "none", textTransform: "uppercase", color: "#000"}}>DataGridSample</Link></li>
       </ul>
 
       <Routes>
@@ -43,6 +45,7 @@ function App() {
         <Route path="/AxiosProducts" element={<AxiosProducts></AxiosProducts>}></Route>
         <Route path="/AxiosProducts/:id" element={<AxiosProductDetail />}></Route>
         <Route path="/AxiosUsers" element={<AxiosUsers></AxiosUsers>}></Route>
+        <Route path="/DataGridSample" element={<DataGridSample />}></Route>
       </Routes>
     </div>
   );
