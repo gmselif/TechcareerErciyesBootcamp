@@ -19,10 +19,9 @@ function DataGridSample() {
   async function handleDelete(id) {
     await axios.delete(BASE_URL + `${id}`).then(res => {
       console.log("Successfully Deleted")
-      const responce = axios.get(BASE_URL)
-      setRows(responce.data)
-      console.log(rows)
-    })
+      const newRows = rows.filter(product => product.id != id)
+      setRows(newRows)
+    }).catch(error => console.error(error));
   }
 
   const columns = [
