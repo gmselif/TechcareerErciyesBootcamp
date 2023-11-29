@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useQuery } from "react-query";
-
 import { DataGrid } from '@mui/x-data-grid';
-import { Box, Container, Stack, Button } from '@mui/material';
+import { Container } from '@mui/material';
 
 function DataGridSample() {
   const { data, status } = useQuery("products", getProducts);
@@ -78,6 +77,7 @@ function DataGridSample() {
                 },
               },
             }}
+            pageSizeOptions={[5]}
           />
         </Container>
       )}
